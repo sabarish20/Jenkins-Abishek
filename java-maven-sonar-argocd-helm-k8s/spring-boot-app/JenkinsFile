@@ -19,6 +19,13 @@ pipeline {
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
       }
     }
+    stage('Check Version of Mvn and Java'){
+      steps {
+        sh 'mvn --version'
+        sh 'java --version'
+      }
+    }
+    
     stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://43.204.36.173:9000"
